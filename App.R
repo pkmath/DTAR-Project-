@@ -1,15 +1,15 @@
 # Call all the functions we will need
-files.sources = list.files(path = "/cloud/project/R scripts/", full.names = T)
+files.sources = list.files(path = "/cloud/project/scripts/", full.names = T)
 sapply(files.sources, source)
 
-# libraries needed
+# libraries needed (the first time may take some minutes, for the installations needed)
 charge_libraries()
 
-
 # Import data
-data <- read_excel("/cloud/project/datasets/example_bank_movements.xlsx")
+url_data <- "https://github.com/pkmath/DTAR-Project-/blob/master/example_bank_movements.xlsx"
+data <- read_xlsx(url_data)
 data <- clean_data(data)
-categories <- read_excel("/cloud/project/datasets/categories.xlsx")
+categories <- read_xlsx("/cloud/project/datasets/categories.xlsx")
 
 # Shiny App
 shinyApp(

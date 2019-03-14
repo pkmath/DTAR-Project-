@@ -1,7 +1,7 @@
 charge_libraries <- function(){
   packages <- c("ggplot2", "DT", "httr", "dplyr", "rvest", "readxl",
                 "googledrive","RCurl","openssl","taskscheduleR","sendmailR",
-                "mailR","R.utils","shiny","shinydashboard")
+                "mailR","R.utils","shiny","shinydashboard","tidyr")
   if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
     install.packages(setdiff(packages, rownames(installed.packages())))  
   }
@@ -19,5 +19,6 @@ charge_libraries <- function(){
   library(sendmailR)
   library(mailR)
   library(R.utils)
+  library(tidyr)
 }
 
