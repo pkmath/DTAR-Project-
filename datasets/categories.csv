@@ -1,0 +1,22 @@
+"Category","Type","Signature","key1","key2","key3","key4","key5"
+"Donativos socios fundadores","Income","SCL",NA,NA,NA,NA,NA
+"Donativos anónimos","Income","SCL",NA,NA,NA,NA,NA
+"Donativos socios universitarios","Income","SCL",NA,NA,NA,NA,NA
+"Agua","Expense","SCL",NA,NA,NA,NA,NA
+"Luz","Expense","SCL",NA,NA,NA,NA,NA
+"Teléfono","Expense","SCL",NA,NA,NA,NA,NA
+"Gas","Expense","SCL",NA,NA,NA,NA,NA
+"Otros suministros","Expense","SCL","POLSA-ZENER",NA,NA,NA,NA
+"Seguros e impuestos","Expense","SCL",NA,NA,NA,NA,NA
+"Alquileres","Expense","SCL",NA,NA,NA,NA,NA
+"Instalación y conservación","Expense","SCL",NA,NA,NA,NA,NA
+"Sueldo y seguridad social","Expense","SCL","COTIZACION","NOMINA","SUELDO","NÓMINA",NA
+"Material de limpieza","Expense","SCL",NA,NA,NA,NA,NA
+"Suscripciones, papelería, libros","Expense","SCL",NA,NA,NA,NA,NA
+"Coches","Expense","SCL",NA,NA,NA,NA,NA
+"Varios","Expense","SCL",NA,NA,NA,NA,NA
+"Personal","Income",NA,"TRANSFERENCIA DE","CURRO","PENSION","MENSUALIDAD",NA
+"Vivienda","Expense","SCL",NA,NA,NA,NA,NA
+"Alimentos y cocina","Expense","SCL","COMIDAPAL",NA,NA,NA,NA
+"Banco a caja",NA,NA,"REINTEGRO",NA,NA,NA,NA
+"Caja a banco",NA,NA,"INGRESO EN EFECTIVO",NA,NA,NA,NA
