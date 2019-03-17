@@ -1,6 +1,6 @@
 library(dplyr)
 library(tidyr)
-
+library(xlsx)
 ##Load the data set
 datatest <- read.xlsx("C:/Users/Notis/Desktop/example_bank_movements.xlsx",1,header = FALSE,stringsAsFactors=FALSE)
 
@@ -17,11 +17,15 @@ test <- test[-1,]
 View(test)
 
 ##convert importe to numeric
+
+if (class(test$`IMPORTE EUR`) != "numeric"){
 test$`IMPORTE EUR` <- as.numeric(test$`IMPORTE EUR`)
-###creating type variable
-Type = matrix(NA,nrow=nrow(test),ncol=1)
-test = cbind(test,Type)
-View(test)
+}
+
+###creating Type variable
+test=mutate(test,Type=NA)
+
+
 
 ##put entries into type category according if they are income or expenses
 
