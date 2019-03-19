@@ -1,0 +1,16 @@
+---
+title: "User guide"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Quick Start Guide
+Please, follow these short steps in order to learn how to use this useful App, and how it has been built.
+
+## Step 1 out of 5
+
+
+
