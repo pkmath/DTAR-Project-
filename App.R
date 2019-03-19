@@ -10,10 +10,10 @@ charge_libraries()
 # data <- read_excel(url_data)
 data <- read_excel("/cloud/project/datasets/example_bank_movements.xlsx")
 data <- clean_data(data)
-# url_categories <- 
-# categories <- read_xlsx(url_categories)
-categories <- read_xlsx("/cloud/project/datasets/categories.xlsx")
 
+accurate_classification()
+# para gooogle
+.httr-oauth
 # Shiny App
 shinyApp(
   ui = tagList(
@@ -65,10 +65,6 @@ shinyApp(
                 rownames= FALSE,
                 class = 'cell-border compact', editable = T,
                 selection="none")})
-    observe({
-      updateSelectInput(session, "A", "A",selected=lapply(reactiveValuesToList(input), unclass)$A )
-      updateSelectInput(session, "B", "B", selected=lapply(reactiveValuesToList(input), unclass)$B )
-      updateSelectInput(session, "C", "C", selected=lapply(reactiveValuesToList(input), unclass)$C )
-    })
+    
   }
 )
