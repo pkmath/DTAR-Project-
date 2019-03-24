@@ -1,5 +1,5 @@
 ---
-title: "User guide"
+title: "Quick Start Guide"
 output: html_document
 ---
 
@@ -7,10 +7,36 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Quick Start Guide
-Please, follow these short steps in order to learn how to use this useful App, and how it has been built.
+
+**Please, follow these short steps to learn how to use this useful App. Further details about how some functionalities have been developed can be seen by clicking the *Show details* buttons.**
 
 ## Step 1 out of 5
+This RShiny app allows you to keep ordered your personal incomes and expenses, and lets you visualize some useful graphs.  
+
+Supose that you have downloaded a .xlsx file from your bank website containing your incomes and expenses of the current year ([click here](https://github.com/jaimugarte/DTAR-Project-/raw/jaime_branch/datasets/example_bank_movements.xlsx) to download a simulated .xlsx file that we will use during the start guide. Please, take 15 sec. to see the content of the file).   
+
+## Step 2 out of 5
+You can go now to **Data** in the top bar menu, click on the **Import** button located in the left side, and select the file already mentioned. You may see the content of the file in a table. Observe that each expense/income has been classified into some categories, thanks to two ingenious algorithms.
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+ 
+<button onclick="myFunction()">Show details</button>
+ 
+<div id="myDIV">
+The step 1 out of 5 from the Quick Start Guide has this workflow:
+1) Connect with googledrive of this app (that stores the files of this App). If it is the first time the App is used, the file is stored.
+We have created a function that recieves the .xlsx bank file and deletes all the unnecessary rows and columns. As an input, it gives 
+ 
+</div>
 
 
 

@@ -1,8 +1,4 @@
-accurate_classification <- function(){
-  #url_cat <- "" 
-  #categories <- read.csv(url_cat)
-  #url_data <- "" 
-  #data <- read.csv(url_data)
+accurate_classification <- function(data,categories){
   categories <- read.csv("/cloud/project/datasets/categories.csv")
   data <- read.csv("/cloud/project/datasets/data.csv")
   for(i in 1:nrow(data)){

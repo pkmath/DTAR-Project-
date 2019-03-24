@@ -1,5 +1,6 @@
 library(ggplot2)
 getwd()
+data <- read_excel("/cloud/project/datasets/original_data_movements_bank.xlsx")
 data<-read.csv("/cloud/project/datasets/data.csv")
 View(data)
 data$date<-as.Date(as.character(data$date))
