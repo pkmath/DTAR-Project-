@@ -2,7 +2,7 @@
 files.sources = list.files(path = "/cloud/project/scripts/", full.names = T)
 sapply(files.sources, source)
 
-# libraries needed (the first time may take some minutes, for the installations needed)
+# libraries needed (the first time instalaltion may take some minutes)
 charge_libraries()
 
 # Import data
