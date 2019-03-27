@@ -2,7 +2,12 @@
 files.sources = list.files(path = "/cloud/project/scripts/", full.names = T)
 sapply(files.sources, source)
 
+<<<<<<< HEAD
 # libraries needed (the first time instalaltion may take some minutes)
+=======
+
+# libraries needed (the first time may take some minutes, for the installations needed)
+>>>>>>> bbb4a27514d04cce70b75255e4297eba5f48155f
 charge_libraries()
 
 # Import data
@@ -10,10 +15,10 @@ charge_libraries()
 # data <- read_excel(url_data)
 data <- read_excel("/cloud/project/datasets/example_bank_movements.xlsx")
 data <- clean_data(data)
-# url_categories <- 
-# categories <- read_xlsx(url_categories)
-categories <- read_xlsx("/cloud/project/datasets/categories.xlsx")
 
+accurate_classification()
+# para gooogle
+.httr-oauth
 # Shiny App
 shinyApp(
   ui = tagList(
@@ -65,10 +70,6 @@ shinyApp(
                 rownames= FALSE,
                 class = 'cell-border compact', editable = T,
                 selection="none")})
-    observe({
-      updateSelectInput(session, "A", "A",selected=lapply(reactiveValuesToList(input), unclass)$A )
-      updateSelectInput(session, "B", "B", selected=lapply(reactiveValuesToList(input), unclass)$B )
-      updateSelectInput(session, "C", "C", selected=lapply(reactiveValuesToList(input), unclass)$C )
-    })
+    
   }
 )
