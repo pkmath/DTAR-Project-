@@ -2,19 +2,9 @@
 files.sources = list.files(path = "/cloud/project/scripts/", full.names = T)
 sapply(files.sources, source)
 
-
 # libraries needed (the first time may take some minutes, for the installations needed)
 charge_libraries()
 
-# Import data
-# url_data <- "https://github.com/pkmath/DTAR-Project-/blob/master/example_bank_movements.xlsx"
-# data <- read_excel(url_data)
-data <- read_excel("/cloud/project/datasets/example_bank_movements.xlsx")
-data <- clean_data(data)
-
-accurate_classification()
-# para gooogle
-.httr-oauth
 # Shiny App
 shinyApp(
   ui = tagList(
@@ -46,8 +36,8 @@ shinyApp(
                )
       ),
       tabPanel("Control", "This panel is intentionally left blank"),
-      tabPanel("Settings", "This panel is intentionally left blank"),
-      tabPanel("About", "This panel is intentionally left blank")
+      tabPanel("About",uiOutput("md_file"))
+      
     )
   ),
   server = function(input, output) {
@@ -66,6 +56,10 @@ shinyApp(
                 rownames= FALSE,
                 class = 'cell-border compact', editable = T,
                 selection="none")})
-    
+    output$md_file <- renderUI({
+      file <- "/cloud/project/Quick start Guide.Rmd"
+      includeMarkdown(file)
+    })
   }
 )
+
