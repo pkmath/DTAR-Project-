@@ -2,8 +2,13 @@ library(dplyr)
 library(tidyr)
 library(xlsx)
 ##Load the data set
-datatest <- read.xlsx("C:/Users/Notis/Desktop/example_bank_movements.xlsx",1,header = FALSE,stringsAsFactors=FALSE)
+#datatest <- read.xlsx("C:/Users/Notis/Desktop/example_bank_movements.xlsx",1,header = FALSE,stringsAsFactors=FALSE)
 
+data_cleaning <- function(file){
+  
+##Load the data set
+datatest <- read.xlsx(file,1,header = FALSE,stringsAsFactors=FALSE)
+  
 ##cleaning data, drop empty columns and rows
 test <- datatest %>%
   select_if(function(x) !(all(is.na(x)) | all(x==""))) %>%
@@ -35,19 +40,7 @@ for (i in 1:nrow(test)){
       (test$Type[i]= "Expense") }
   
 }
-
-##trying to identify categories of trancactions
-v=NULL
-for (i in 1:nrow(test)){
-v = c(v,strsplit(test$CONCEPTO[i],split = " ")[[1]])
+return(test)
 }
-v=as.data.frame(table(v))
-##now in v we see the words used in concepto with frequencies
 
-##filter the most used words
-v%>%
-  filter(Freq >= 100)
 
-##I notice that TRANSFERENCIA is associated with income money
-## but i am not sure if all incomes are of the same category
-##also recibo is associated with expenses
