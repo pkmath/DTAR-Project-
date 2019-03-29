@@ -10,7 +10,8 @@ output: html_document
 ## Step 1 out of 3
 This RShiny app allows you to keep ordered your personal incomes and expenses, and lets you visualize some useful graphs.  
 
-Supose that you have downloaded a .xlsx file from your bank website containing your incomes and expenses of the current year ([click here](https://www.kaggle.com/notis23/bank-movements-with-descriptions-in-spanish#example_bank_movements.xlsx) to download a simulated .xlsx file that we will use during the start guide. Please, take now 15 sec. to see the content of the file).   
+Supose that you have downloaded a .xlsx file from your bank website containing your incomes and expenses of the current year [click here](https://github.com/jaimugarte/DTAR-Project-/raw/jaime_branch/datasets/example_bank_movements.xlsx) to download a simulated .xlsx file that we will use during the start guide. Please, take now 15 sec. to see the content of the file).  
+The file has been dowloaded from Kaggle webpage: https://www.kaggle.com/notis23/bank-movements-with-descriptions-in-spanish#example_bank_movements.xlsx  
 
 ---
 
