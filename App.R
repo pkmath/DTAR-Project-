@@ -1,35 +1,28 @@
-# Call all the functions we will need
-files.sources = list.files(path = "/cloud/project/scripts/", full.names = T)
+#######################################################################################
+# CHARGE LIBRARIES AND FUNCTIONS
+#######################################################################################
+#***********************************************************
+# ATENTION 1: set the working directory in the forked folder
+#***********************************************************
+# Funtion that installs the packages used by the Shiny App:
+source("./charge_libraries.R") ; charge_libraries()
+
+# Charge the functions that RShiny will use:
+functions_path <- gsub(" ", "", paste(getwd(),"/scripts"), fixed = TRUE)
+files.sources = list.files(path = functions_path, full.names = T)
 sapply(files.sources, source)
 
-#<<<<<<< HEAD
-# libraries needed (the first time instalaltion may take some minutes)
-#=======
-
-# libraries needed (the first time may take some minutes, for the installations needed)
-#>>>>>>> bbb4a27514d04cce70b75255e4297eba5f48155f
-charge_libraries()
-
-# Import data
-# url_data <- "https://github.com/pkmath/DTAR-Project-/blob/master/example_bank_movements.xlsx"
-# data <- read_excel(url_data)
-data <- read_excel("/cloud/project/datasets/example_bank_movements.xlsx")
-data <- clean_data(data)
-
-accurate_classification()
-# para gooogle
-.httr-oauth
-# Shiny App
+#######################################################################################
+# SHINY APP
+#######################################################################################
 shinyApp(
   ui = tagList(
-    shinythemes::themeSelector(),
     navbarPage(
-      theme = "cosmo",
-      "Accounting Program",
-      tabPanel("Data",
-               sidebarPanel(
-                 fileInput("file", "Import data (.xlsx)"),
-                 actionButton("action2", "Import", class = "btn-primary")
+      theme = shinytheme("flatly"),                           # Theme selection
+      "Accounting Program",                                   # Title
+      tabPanel("Data",                                        # Three tab panels in the menu
+               sidebarPanel(                                  
+                 fileInput("file", "Import data (.xlsx)")
                ),
                mainPanel(
                  tabsetPanel(
@@ -43,33 +36,43 @@ shinyApp(
                       }
                       }
                      Shiny.onInputChange("checked_rows",checkboxesChecked);  })'))
-                   ),
-                   tabPanel("Budget","This panel is intentionally left blank"),
-                   tabPanel("Categories",  DT::dataTableOutput("table2"))
+                   )
                  )
                )
       ),
-      tabPanel("Control", "This panel is intentionally left blank"),
-      tabPanel("Settings", "This panel is intentionally left blank"),
-      tabPanel("About", "This panel is intentionally left blank")
+      tabPanel("Control",
+               tabsetPanel(
+                 tabPanel("QuickBooks Income and Expenses (2018)", plotlyOutput("plot1")),
+                 tabPanel("Incomes by class", plotlyOutput("plot2")),
+                 tabPanel("Expenses by class", plotlyOutput("plot3"))
+               )
+      ),
+      tabPanel("About",uiOutput("md_file"))
     )
   ),
   server = function(input, output) {
+    data <- eventReactive(input$file, {
+      data_cleaning(input$file$datapath) }) # code of data_cleaning in /scripts/data_cleaning.R
     output$table <- DT::renderDataTable({
-      data$check <-''
-      data$check[2:5]<-'checked=\"checked\"'
-      data[["check1"]]<-glue::glue('<input type="checkbox" name="selected" {data$check} value="{1:nrow(data)}"><br>')
-      datatable(data, 
+      datatable(data(), 
                 filter = 'top', options = list(scrollX = T, paging = FALSE, escape = FALSE),
                 rownames= FALSE,
                 class = 'cell-border compact', editable = T,
                 selection="none")})
-    output$table2 <- DT::renderDataTable({
-      datatable(categories, 
-                filter = 'top', options = list(scrollX = T),
-                rownames= FALSE,
-                class = 'cell-border compact', editable = T,
-                selection="none")})
-    
+    output$plot1 <- renderPlotly({
+      ggplotly(plot_1(data())) # code of plot_1 in /scripts/plots.R
+    })
+    output$plot2 <- renderPlotly({
+      ggplotly(plot_2(data())) # code of plot_2 in /scripts/plots.R
+    })
+    output$plot3 <- renderPlotly({
+      ggplotly(plot_3(data())) # code of plot_3 in /scripts/plots.R
+    })
+    output$md_file <- renderUI({
+      file <- "./Quick start Guide.Rmd"
+      includeMarkdown(file)
+    })
   }
 )
+
+
